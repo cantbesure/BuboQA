@@ -11,7 +11,10 @@ idtostr = defaultdict(list)
 with open("../data/names.trimmed.2M.txt") as f:
     for line in f.readlines():
         line = line.strip().split('\t')
-        key, value = line[0], line[2]
+        try:
+            key, value = line[0], line[2]
+        except:
+            continue
         idtostr[key].append(value)
 
 exact_match = False # Priority for Exact Match

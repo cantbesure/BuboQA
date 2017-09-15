@@ -11,16 +11,8 @@ from nltk.corpus import stopwords
 
 """
 Example command to run program:
-Gold query text:
-python entity_linking.py -t ../data/SimpleQuestions_v2_modified/test.txt --index_ent ../indexes/entity_2M.pkl --index_reach ../indexes/reachability_2M.pkl \
-    --index_names ../indexes/names_2M.pkl --ent_result ../entity_detection/gold-query-text/test.txt \
-    --rel_result ../relation_prediction/results/main-test-results.txt --output ./gold-results
-ls
 
-Predicted query text:
-python entity_linking.py -t ../data/SimpleQuestions_v2_modified/test.txt --index_ent ../indexes/entity_2M.pkl --index_reach ../indexes/reachability_2M.pkl \
-    --index_names ../indexes/names_2M.pkl --ent_result ../entity_detection/query-text/test.txt \
-    --rel_result ../relation_prediction/results/main-test-results.txt --output ./results
+
 """
 stopwords = set(stopwords.words('english'))
 
@@ -97,11 +89,14 @@ def entity_linking_one_file(id2question, index_ent, index_reach, index_names, en
     id2mids = {}
     HITS_TOP_ENTITIES = int(hits)
 
-    outfile.write("{}".format(lineid))
     for i, lineid in enumerate(ent_lineids):
+        if not lineid in id2question.keys():
+            continue
+
         if i % 1000 == 0:
             print("line {}".format(i))
 
+        outfile.write("{}".format(lineid))
         truth_mid, truth_mid_name, truth_rel, question = id2question[lineid]
         queries = id2queries[lineid]
         C = []  # candidate entities
@@ -110,7 +105,7 @@ def entity_linking_one_file(id2question, index_ent, index_reach, index_names, en
 
 
         for query_text in queries:
-            query_tokens = query.split()
+            query_tokens = query_text.split()
             N = min(len(query_tokens), 3)
 
             for n in range(N, 0, -1):
@@ -160,7 +155,7 @@ def active_entity_linking(data_path, index_entpath, index_reachpath, index_names
     for fname in fnames:
         inpath = os.path.join(outpath, fname + ".txt")
         ent_resultpath = os.path.join(ent_resultdir, fname + ".txt")
-        outfile = open(os.path.join(outpath, fname + ".txt"), 'w')
+        outfile = open(os.path.join(outpath, fname + "-h{}.txt".format(hits)), 'w')
         entity_linking_one_file(id2question, index_ent, index_reach, index_names, ent_resultpath, hits, outfile)
 
 

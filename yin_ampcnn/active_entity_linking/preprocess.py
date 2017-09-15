@@ -2,14 +2,10 @@ import re
 from collections import defaultdict
 from fuzzywuzzy import process
 import logging
-from nltk.tokenize.treebank import TreebankWordTokenizer
-
 logger = logging.getLogger()
 logger.disabled = True
 
 idtostr = defaultdict(list)
-
-tokenizer = TreebankWordTokenizer()
 
 # Read ID-Name from file
 with open("../data/FB5M.name.txt") as f:

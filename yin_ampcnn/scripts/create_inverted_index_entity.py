@@ -49,7 +49,6 @@ def create_inverted_index_entity(namespath, outpath):
             for ngram_tuple in name_ngrams:
                 size += 1
                 ngram = " ".join(ngram_tuple)
-                ngram = strip_accents(ngram)
                 # print(ngram)
                 if ngram in index.keys():
                     index[ngram].add(entity_mid)

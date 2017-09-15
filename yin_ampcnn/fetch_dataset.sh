@@ -34,5 +34,4 @@ python scripts/create_index_names.py -n data/names.trimmed.2M.txt -p indexes/nam
 echo "\n\nCreate augmented dataset...\n"
 python scripts/augment_dataset.py -d data/SimpleQuestions_v2 -o data/SimpleQuestions_v2_augmented -i indexes/names_2M.pkl
 
-
 echo "\n\nDONE!"

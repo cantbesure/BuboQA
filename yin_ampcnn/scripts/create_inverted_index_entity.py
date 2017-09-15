@@ -4,10 +4,7 @@ import sys
 import argparse
 import pickle
 
-from nltk.tokenize.treebank import TreebankWordTokenizer
-from util import www2fb, clean_uri, strip_accents
-
-tokenizer = TreebankWordTokenizer()
+from util import www2fb, clean_uri, processed_text
 
 def get_all_ngrams(tokens):
     all_ngrams = set()
@@ -23,8 +20,8 @@ def find_ngrams(input_list, n):
 
 
 def get_name_ngrams(entity_name):
-    entity_name = entity_name.lower() # lowercase the name
-    name_tokens = tokenizer.tokenize(entity_name)
+    processed_name = processed_text(entity_name) # lowercase the name
+    name_tokens = processed_name.split()
     name_ngrams = get_all_ngrams(name_tokens)
 
     return name_ngrams

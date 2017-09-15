@@ -8,12 +8,10 @@ logger.disabled = True
 idtostr = defaultdict(list)
 
 # Read ID-Name from file
-with open("../data/FB5M.name.txt") as f:
+with open("../data/names.trimmed.2M.txt") as f:
     for line in f.readlines():
-        line = line.split('\t')
+        line = line.strip().split('\t')
         key, value = line[0], line[2]
-        key = key.split('.')[1][:-1]
-        value = value[1:-1]
         idtostr[key].append(value)
 
 exact_match = False # Priority for Exact Match
@@ -23,16 +21,15 @@ total = 0
 for item in ["train.txt","valid.txt","test.txt"]:
     fout = open("data/annotated_fb_entity_"+item, "w")
     flog = open("data/logging_"+item, "w")
-    with open("../data/SimpleQuestions_v2/annotated_fb_data_"+item) as f:
+    with open("../data/SimpleQuestions_v2_augmented/"+item) as f:
         print("Processing {} file".format(item))
         for line_num, line in enumerate(f.readlines()):
             total += 1
             exact_match = False
             line = line.split('\t')
-            key, sent_ori = line[0], line[3]
-            sent = tokenizer.tokenize(sent_ori) # Tokenize the sentence
+            key, sent_ori = line[1], line[4]
+            sent = sent_ori.split()
             label = ["O"] * len(sent) # Initialize the label list with "O" (out of entity)
-            key = key.split('/')[2]
             try:
                 candi = idtostr.get(key, [])
                 if candi == []: # If the key is not in the dict, we just label all words with "O"

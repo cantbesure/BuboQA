@@ -17,6 +17,7 @@ def get_names_for_entities(namespath):
             items = line.strip().split("\t")
             if len(items) != 3:
                 print("ERROR: line - {}".format(line))
+                continue
             entity = items[0]
             type = items[1]
             literal = items[2].strip()

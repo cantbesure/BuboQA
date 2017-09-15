@@ -40,9 +40,9 @@ def create_inverted_index_entity(namespath, outpath):
             if len(items) != 4:
                 print("ERROR: line - {}".format(line))
 
-            entity_mid = clean_uri(items[0])
-            entity_type = clean_uri(items[1])
-            entity_name = clean_uri(items[2])
+            entity_mid = items[0]
+            entity_type = items[1]
+            entity_name = items[2]
 
             name_ngrams = get_name_ngrams(entity_name)
 

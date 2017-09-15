@@ -1,1 +1,5 @@
 .idea/*
+data
+*_cache
+active_entity_linking/saved_checkpoints/
+active_entity_linking/trained_model/

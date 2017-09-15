@@ -14,9 +14,9 @@ def get_questions(datapath):
             items = line.strip().split("\t")
             lineid = items[0].strip()
             sub = items[1].strip()
-            pred = items[2].strip()
-            obj = items[3].strip()
-            question = items[4].strip()
+            pred = items[3].strip()
+            obj = items[4].strip()
+            question = items[5].strip()
             #print("{}   -   {}".format(lineid, question))
             id2question[lineid] = question
     return id2question
@@ -43,7 +43,7 @@ def get_span(label):
 
 def convert_to_query_text(datapath, resultdir, outdir):
     id2question = get_questions(datapath)
-    files = [("main-valid-results", "val"), ("main-test-results", "test")]
+    files = [("main-train-results", "train"), ("main-valid-results", "valid"), ("main-test-results", "test")]
     for f_tuple in files:
         f = f_tuple[0]
         fname = f_tuple[1]
@@ -74,7 +74,7 @@ def convert_to_query_text(datapath, resultdir, outdir):
                     query_tokens.append(" ".join(tokens[span[0]:span[1]]))
 
                 outfile.write(lineid)
-                if len(query_tokens) == 0:
+                if len(query_tokens) == 0 and lineid in id2question.keys():
                     query_text = id2question[lineid]
                     query_tokens.append(query_text)
                 # if no query text found, use the entire question as query

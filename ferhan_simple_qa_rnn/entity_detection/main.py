@@ -105,6 +105,9 @@ def predict(dataset_iter=test_iter, dataset=test, data_name="test"):
     results_file.close()
 
 
+# run the model on the train set and write the output to a file
+predict(dataset_iter=train_iter, dataset=train, data_name="train")
+
 # run the model on the dev set and write the output to a file
 predict(dataset_iter=dev_iter, dataset=dev, data_name="valid")
 

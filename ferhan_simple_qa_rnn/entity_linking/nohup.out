@@ -1,0 +1,225 @@
+Hits: 100
+Similarity: fuzzy
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting questions...
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+Hits: 5
+Similarity: fuzzy
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting questions...
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+Hits: 20
+Similarity: fuzzy
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting questions...
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting query text...
+notfound (empty query text): 0
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+line 0
+line 10000
+line 20000
+line 30000
+line 40000
+line 50000
+line 60000
+line 70000
+done
+0    23645281
+1     3462803
+Name: label, dtype: int64
+0    0
+1    0
+2    0
+3    0
+4    0
+Name: label, dtype: int64
+        idf  length_name  length_query  length_question  pquer  pques  squer  \
+0  1.589439            7             1                6    1.0   0.42   0.05
+1  1.589439           14             1                6    1.0   0.42   0.03
+2  0.000000            2             1                6    1.0   0.31   0.14
+3  1.589439            6             1                6    1.0   0.33   0.08
+4  1.589439            3             1                6    1.0   0.36   0.13
+
+   sques  tf
+0   0.36   1
+1   0.30   1
+2   0.22   1
+3   0.33   1
+4   0.32   1
+0.971741234091
+[[  2.93141586e-01   6.84292655e-03  -2.73777478e-01  -1.62730105e-01
+   -5.89410960e+00   1.16232925e+01   8.24007461e+00  -2.65574521e+00
+    8.37812979e-01]]
+[-11.23966083]
+getting query text...
+notfound (empty query text): 0
+getting query text...
+notfound (empty query text): 0
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting query text...
+notfound (empty query text): 0
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+line 0
+line 10000
+done
+Traceback (most recent call last):
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/indexes/base.py", line 2134, in get_loc
+    return self._engine.get_loc(key)
+  File "pandas/index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas/index.c:4433)
+  File "pandas/index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas/index.c:4279)
+  File "pandas/src/hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13742)
+  File "pandas/src/hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13696)
+KeyError: 'label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "cross_linking_data.py", line 290, in <module>
+    print(df['label'].value_counts())
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 2059, in __getitem__
+    return self._getitem_column(key)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 2066, in _getitem_column
+    return self._get_item_cache(key)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py", line 1386, in _get_item_cache
+    values = self._data.get(item)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 3543, in get
+    loc = self.items.get_loc(item)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/indexes/base.py", line 2136, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas/index.c:4433)
+  File "pandas/index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas/index.c:4279)
+  File "pandas/src/hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13742)
+  File "pandas/src/hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13696)
+KeyError: 'label'
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting query text...
+notfound (empty query text): 0
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+line 0
+line 10000
+line 20000
+line 30000
+line 40000
+line 50000
+line 60000
+line 70000
+done
+Traceback (most recent call last):
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/indexes/base.py", line 2134, in get_loc
+    return self._engine.get_loc(key)
+  File "pandas/index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas/index.c:4433)
+  File "pandas/index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas/index.c:4279)
+  File "pandas/src/hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13742)
+  File "pandas/src/hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13696)
+KeyError: 'label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "cross_linking_data.py", line 290, in <module>
+    print(df['label'].value_counts())
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 2059, in __getitem__
+    return self._getitem_column(key)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 2066, in _getitem_column
+    return self._get_item_cache(key)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py", line 1386, in _get_item_cache
+    values = self._data.get(item)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 3543, in get
+    loc = self.items.get_loc(item)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/indexes/base.py", line 2136, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas/index.c:4433)
+  File "pandas/index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas/index.c:4279)
+  File "pandas/src/hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13742)
+  File "pandas/src/hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13696)
+KeyError: 'label'
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting query text...
+notfound (empty query text): 0
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+line 0
+line 10000
+done
+0    0
+1    0
+2    0
+3    1
+4    0
+Name: true_label, dtype: int64
+Traceback (most recent call last):
+  File "cross_linking_data.py", line 301, in <module>
+    lr.fit(X, y)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/sklearn/linear_model/logistic.py", line 1173, in fit
+    order="C")
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/sklearn/utils/validation.py", line 521, in check_X_y
+    ensure_min_features, warn_on_dtype, estimator)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/sklearn/utils/validation.py", line 382, in check_array
+    array = np.array(array, dtype=dtype, order=order, copy=copy)
+ValueError: could not convert string to float: 'billy corgan'

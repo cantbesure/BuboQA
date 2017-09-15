@@ -178,7 +178,7 @@ for i, lineid in enumerate(rel_lineids):
     if i % 1000 == 0:
         print("line {}".format(i))
 
-    question = id2question[lineid]
+    truth_mid, truth_rel, question = id2question[lineid]
     query_text = id2query[lineid].lower()  # lowercase the query
     query_tokens = tokenize_text(query_text)
 
@@ -218,14 +218,16 @@ for i, lineid in enumerate(rel_lineids):
     C_tfidf_pruned = []
     for mid, count_mid in C_pruned:
         if mid in index_names.keys():
-            cand_ent_name = pick_best_name(question[2], index_names[mid])
+            cand_ent_name = pick_best_name(question, index_names[mid])
             if args.sim == "custom":
                 tfidf = calc_tf_idf(query_text, cand_ent_name, count_mid, num_entities_fbsubset, index_ent)
                 simple_match =  fuzz.ratio(cand_ent_name, question) / 100.0
                 token_sort_ratio = fuzz.token_sort_ratio(cand_ent_name, question) / 100.0
                 score = tfidf * 0.01 + simple_match + token_sort_ratio
             elif args.sim == "fuzzy":
-                score = fuzzy_match_score(cand_ent_name, query_text)
+                score = fuzzy_match_score(cand_ent_name, question)
+            elif args.sim == "token":
+                score = fuzz.token_sort_ratio(cand_ent_name, question) / 100.0
             else:
                 score = calc_tf_idf(query_text, cand_ent_name, count_mid, num_entities_fbsubset, index_ent)
             C_tfidf_pruned.append((mid, cand_ent_name, score))

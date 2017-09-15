@@ -37,8 +37,9 @@ def create_inverted_index_entity(namespath, outpath):
                 print("line: {}".format(i))
 
             items = line.strip().split("\t")
-            if len(items) != 4:
+            if len(items) != 3:
                 print("ERROR: line - {}".format(line))
+                continue
 
             entity_mid = items[0]
             entity_type = items[1]

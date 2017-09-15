@@ -2,7 +2,7 @@
 
 # download dataset and put it in data directory
 mkdir data
-pushd data
+cd data
 
 echo "Downloading SimpleQuestions dataset...\n"
 wget https://www.dropbox.com/s/tohrsllcfy7rch4/SimpleQuestions_v2.tgz
@@ -14,16 +14,13 @@ echo "\n\nDownloading the augmented FB2M graph and names file...\n"
 wget https://www.dropbox.com/s/yqbesl07hsw297w/FB5M.name.txt
 wget https://www.dropbox.com/s/8tcagdi2iq8q0w5/fb-2M-augmented.txt
 
-popd
+cd ..
 
 echo "\n\nTrimming the names file for subset 2M...\n"
 python scripts/trim_names.py -s data/SimpleQuestions_v2/freebase-subsets/freebase-FB2M.txt -n data/FB5M.name.txt -o data/names.trimmed.2M.txt
 
 #echo "\n\nTrimming the names file for subset 5M...\n"
 #python scripts/trim_names.py -s data/SimpleQuestions_v2/freebase-subsets/freebase-FB5M.txt -n data/FB5M.name.txt -o data/names.trimmed.5M.txt
-
-echo "\n\nCreate modified - numbered dataset...\n"
-python scripts/modify_dataset.py -d data/SimpleQuestions_v2 -o data/SimpleQuestions_v2_modified
 
 # creating the name index
 mkdir indexes

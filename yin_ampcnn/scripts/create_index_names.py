@@ -15,15 +15,16 @@ def get_names_for_entities(namespath):
                 print("line: {}".format(i))
 
             items = line.strip().split("\t")
-            if len(items) != 4:
+            if len(items) != 3:
                 print("ERROR: line - {}".format(line))
             entity = items[0]
             type = items[1]
-            literal = items[2]
-            if entity not in names.keys():
-                names[entity] = [literal]
-            else:
-                names[entity].append(literal)
+            literal = items[2].strip()
+            if literal != "":
+                if entity not in names.keys():
+                    names[entity] = [literal]
+                else:
+                    names[entity].append(literal)
     return names
 
 if __name__ == '__main__':

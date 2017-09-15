@@ -29,8 +29,8 @@ for item in ["train.txt","valid.txt","test.txt"]:
         for line_num, line in enumerate(f.readlines()):
             total += 1
             exact_match = False
-            line = line.split('\t')
-            key, sent_ori = line[1], line[4]
+            line = line.strip().split('\t')
+            key, sent_ori = line[1], line[5]
             sent = sent_ori.split()
             label = ["O"] * len(sent) # Initialize the label list with "O" (out of entity)
             try:

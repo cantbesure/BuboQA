@@ -41,7 +41,7 @@ def trim_names(fbsubsetpath, namespath, outpath):
             type = clean_uri(items[1])
             name = processed_text(clean_uri(items[2]))
 
-            if entity in mids_to_check:
+            if entity in mids_to_check and name.strip() != "":
                 line_to_write = "{}\t{}\t{}\n".format(entity, type, name)
                 outfile.write(line_to_write)
 

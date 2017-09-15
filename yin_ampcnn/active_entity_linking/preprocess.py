@@ -89,5 +89,5 @@ for item in ["train.txt","valid.txt","test.txt"]:
                         label[l] = 'I'
                 flog.write(str(line_num) + "\t" + " ".join(line) + "\t" + " ".join(value) + "\t" + " ".join(sent) + '\n\t' + " ".join(label)+"\n")
             fout.write(" ".join(sent) + '\t' + " ".join(label) + '\n')
-    print("total = ",total,"exact_match = ",count_exact_match)
+    print("total = ",total,"exact_match = ",count_exact_match,"ratio = ",count_exact_match/total)
 

@@ -9,8 +9,8 @@ def get_args():
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--rnn_type', type=str, default='lstm') # or use 'gru'
     parser.add_argument('--d_embed', type=int, default=300)
-    parser.add_argument('--d_hidden', type=int, default=200)
-    parser.add_argument('--n_layers', type=int, default=2)
+    parser.add_argument('--d_hidden', type=int, default=360)
+    parser.add_argument('--n_layers', type=int, default=4)
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--test', action='store_true', dest='test', help='get the testing set result')
     parser.add_argument('--dev', action='store_true', dest='dev', help='get the development set result')
@@ -19,7 +19,7 @@ def get_args():
     parser.add_argument('--log_every', type=int, default=50)
     parser.add_argument('--dev_every', type=int, default=100)
     parser.add_argument('--save_every', type=int, default=4500)
-    parser.add_argument('--dropout_prob', type=float, default=0.3)
+    parser.add_argument('--dropout_prob', type=float, default=0.35)
     parser.add_argument('--patience', type=int, default=5, help="number of epochs to wait before early stopping")
     parser.add_argument('--no_cuda', action='store_false', help='do not use CUDA', dest='cuda')
     parser.add_argument('--gpu', type=int, default=0, help='GPU device to use') # use -1 for CPU

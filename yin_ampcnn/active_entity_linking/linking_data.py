@@ -203,7 +203,7 @@ def active_entity_linking(data_path, index_entpath, index_reachpath, index_names
     for fname in fnames:
         inpath = os.path.join(outpath, fname + ".txt")
         ent_resultpath = os.path.join(ent_resultdir, fname + ".txt")
-        outfname = os.path.join(outpath, "{}-h{}-data.pkl".format(fname))
+        outfname = os.path.join(outpath, "{}-data.pkl".format(fname))
         df = linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_resultpath)
         df.to_pickle(outfname)
 

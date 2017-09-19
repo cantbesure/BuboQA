@@ -5,9 +5,11 @@ import sys
 import argparse
 import pickle
 import math
+import pandas as pd
 
 from fuzzywuzzy import fuzz
 from nltk.corpus import stopwords
+from collections import defaultdict
 
 """
 Example command to run program:
@@ -84,11 +86,43 @@ def pick_best_name(question, names_list):
 
     return best_name
 
+def calc_tf_idf(question, query, cand_ent_name, cand_ent_count, num_entities, index_ent):
+    query_terms = cand_ent_name.split()
+    doc_tokens = question.split()
+    common_terms = set(query_terms).intersection(set(doc_tokens))
 
-def entity_linking_one_file(id2question, index_ent, index_reach, index_names, ent_resultpath, hits, outfile):
+    # len_intersection = len(common_terms)
+    # len_union = len(set(query_terms).union(set(doc_tokens)))
+    # tf = len_intersection / len_union
+    tf = math.log10(cand_ent_count + 1)
+    k1 = 0.5
+    k2 = 0.5
+    total_idf = 0
+    for term in common_terms:
+        df = len(index_ent[term])
+        idf = math.log10( (num_entities + k1) / (df + k2) )
+        total_idf += idf
+    return tf * total_idf
+
+def calc_idf(question, cand_ent_name, index_ent):
+    query_terms = cand_ent_name.split()
+    doc_tokens = question.split()
+    common_terms = set(query_terms).intersection(set(doc_tokens))
+    fix_terms = 80000
+    total_idf = 0
+    for term in common_terms:
+        df = len(index_ent[term])
+        if df > fix_terms:
+            continue # too common term
+        idf = math.log10( (fix_terms + 1) / (df + 1) )
+        total_idf += idf
+    return total_idf
+
+
+def linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_resultpath):
     ent_lineids, id2queries = get_query_texts(ent_resultpath)  # ent_lineids may have some examples missing
     id2mids = {}
-    HITS_TOP_ENTITIES = int(hits)
+    data = defaultdict(list)
 
     for i, lineid in enumerate(ent_lineids):
         if not lineid in id2question.keys():
@@ -97,13 +131,11 @@ def entity_linking_one_file(id2question, index_ent, index_reach, index_names, en
         if i % 1000 == 0:
             print("line {}".format(i))
 
-        outfile.write("{}".format(lineid))
         truth_mid, truth_mid_name, truth_rel, question = id2question[lineid]
         queries = id2queries[lineid]
         C = []  # candidate entities
         C_counts = []
         C_scored = []
-
 
         for query_text in queries:
             query_tokens = query_text.split()
@@ -133,20 +165,39 @@ def entity_linking_one_file(id2question, index_ent, index_reach, index_names, en
             for mid, count_mid in C_counts:
                 if mid in index_names.keys():
                     cand_ent_name = pick_best_name(question, index_names[mid])
-                    score = fuzz.ratio(cand_ent_name, query_text) / 100.0
-                    C_scored.append((mid, cand_ent_name, score))
+                    try:
+                        truth_name = pick_best_name(question, index_names[truth_mid])
+                    except:
+                        continue
+                    if cand_ent_name == truth_name:  # if name is correct, we are good
+                        data['exact_name_match'].append(1)
+                    else:
+                        data['exact_name_match'].append(0)
+                        if fuzz.ratio(cand_ent_name, truth_name) >= 60:
+                            data['partial_name_match'].append(1)
+                        else:
+                            data['partial_name_match'].append(0)
 
-        C_scored.sort(key=lambda t: t[2], reverse=True)
-        cand_mids = C_scored[:HITS_TOP_ENTITIES]
-        for (mid, name, score) in cand_mids:
-            outfile.write(" %%%% {}\t{}\t{}".format(mid, name, score))
+                    if mid == truth_mid:
+                        data['true_label'].append(1)
+                    else:
+                        data['true_label'].append(0)
+                    data['lineid'] = lineid
+                    data['query'] = query_text
+                    data['length_name'].append(len(cand_ent_name.split()))
+                    data['length_question'].append(len(question.split()))
+                    data['length_query'].append(len(query_tokens))
+                    data['tf'].append(count_mid)
+                    data['idf'].append(calc_idf(question, cand_ent_name, index_ent))
+                    data['sques'].append(fuzz.ratio(cand_ent_name, question) / 100.0)
+                    data['squer'].append(fuzz.ratio(cand_ent_name, query_text) / 100.0)
+                    data['pques'].append(fuzz.partial_ratio(cand_ent_name, question) / 100.0)
+                    data['pquer'].append(fuzz.partial_ratio(cand_ent_name, query_text) / 100.0)
 
-        id2mids[lineid] = cand_mids
-        outfile.write("\n")
+    df = pd.DataFrame(data)
+    return df
 
-    outfile.close()
-
-def active_entity_linking(data_path, index_entpath, index_reachpath, index_namespath, ent_resultdir, hits, outpath):
+def active_entity_linking(data_path, index_entpath, index_reachpath, index_namespath, ent_resultdir, outpath):
     id2question = get_questions(data_path)
     index_ent = get_index(index_entpath)
     index_reach = get_index(index_reachpath)
@@ -156,9 +207,9 @@ def active_entity_linking(data_path, index_entpath, index_reachpath, index_names
     for fname in fnames:
         inpath = os.path.join(outpath, fname + ".txt")
         ent_resultpath = os.path.join(ent_resultdir, fname + ".txt")
-        outfile = open(os.path.join(outpath, fname + "-h{}.txt".format(hits)), 'w')
-        entity_linking_one_file(id2question, index_ent, index_reach, index_names, ent_resultpath, hits, outfile)
-
+        outfname = os.path.join(outpath, "{}-h{}-data.pkl".format(fname))
+        df = linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_resultpath)
+        df.to_pickle(outfname)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Do entity linking')
@@ -172,10 +223,8 @@ if __name__ == '__main__':
                         help='path to the pickle for the names index')
     parser.add_argument('--ent_result', dest='ent_result', action='store', required=True,
                         help='path to the entity detection directory that contains results with the query texts')
-    parser.add_argument('-n', '--hits', dest='hits', action='store', required=True,
-                        help='number of top hits')
     parser.add_argument('--output', dest='output', action='store', required=True,
-                        help='directory path to the output of entity linking')
+                        help='directory path to the data of entity linking')
 
     args = parser.parse_args()
     print("Dataset: {}".format(args.dataset))
@@ -183,13 +232,12 @@ if __name__ == '__main__':
     print("Index - Reachability: {}".format(args.index_reach))
     print("Index - Names: {}".format(args.index_names))
     print("Entity Detection Results: {}".format(args.ent_result))
-    print("Hits: {}".format(args.hits))
     print("Output: {}".format(args.output))
     print("-" * 80)
 
     if not os.path.exists(args.output):
         os.makedirs(args.output)
 
-    active_entity_linking(args.dataset, args.index_ent, args.index_reach, args.index_names, args.ent_result, args.hits, args.output)
+    active_entity_linking(args.dataset, args.index_ent, args.index_reach, args.index_names, args.ent_result, args.output)
 
     print("Active Entity Linking done.")

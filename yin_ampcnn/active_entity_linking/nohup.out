@@ -101,3 +101,515 @@ Dev Precision:  81.610555% Recall:  84.557368% F1 Score:  83.057832%
    453     2      3250   891/2359       38% 0.044297      81.3026
    464     2      3300   941/2359       40% 0.092249      81.3828      82.4316
 Dev Precision:  82.090509% Recall:  84.481946% F1 Score:  83.269061%
+Dataset: ../data/SimpleQuestions_v2_augmented/all.txt
+Index - Entity: ../indexes/entity_2M.pkl
+Index - Reachability: ../indexes/reachability_2M.pkl
+Index - Names: ../indexes/names_2M.pkl
+Entity Detection Results: query-text/
+Hits: 20
+Output: linking-results
+--------------------------------------------------------------------------------
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+line 22000
+line 23000
+line 24000
+line 25000
+line 26000
+line 27000
+line 28000
+line 29000
+line 30000
+line 31000
+line 32000
+line 33000
+line 34000
+line 35000
+line 36000
+line 37000
+line 38000
+line 39000
+line 40000
+line 41000
+line 42000
+line 43000
+line 44000
+line 45000
+line 46000
+line 47000
+line 48000
+line 49000
+line 50000
+line 51000
+line 52000
+line 53000
+line 54000
+line 55000
+line 56000
+line 57000
+line 58000
+line 59000
+line 60000
+line 61000
+line 62000
+line 63000
+line 64000
+line 65000
+line 66000
+line 67000
+line 68000
+line 69000
+line 70000
+line 71000
+line 72000
+line 73000
+line 74000
+line 75000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+Active Entity Linking done.
+Dataset: ../data/SimpleQuestions_v2_augmented/all.txt
+Index - Entity: ../indexes/entity_2M.pkl
+Index - Reachability: ../indexes/reachability_2M.pkl
+Index - Names: ../indexes/names_2M.pkl
+Entity Detection Results: query-text/
+Hits: 5
+Output: linking-results
+--------------------------------------------------------------------------------
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+line 22000
+line 23000
+line 24000
+line 25000
+line 26000
+line 27000
+line 28000
+line 29000
+line 30000
+line 31000
+line 32000
+line 33000
+line 34000
+line 35000
+line 36000
+line 37000
+line 38000
+line 39000
+line 40000
+line 41000
+line 42000
+line 43000
+line 44000
+line 45000
+line 46000
+line 47000
+line 48000
+line 49000
+line 50000
+line 51000
+line 52000
+line 53000
+line 54000
+line 55000
+line 56000
+line 57000
+line 58000
+line 59000
+line 60000
+line 61000
+line 62000
+line 63000
+line 64000
+line 65000
+line 66000
+line 67000
+line 68000
+line 69000
+line 70000
+line 71000
+line 72000
+line 73000
+line 74000
+line 75000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+Active Entity Linking done.
+Dataset: ../data/SimpleQuestions_v2_augmented/all.txt
+Index - Entity: ../indexes/entity_2M.pkl
+Index - Reachability: ../indexes/reachability_2M.pkl
+Index - Names: ../indexes/names_2M.pkl
+Entity Detection Results: query-text/
+Hits: 50
+Output: linking-results
+--------------------------------------------------------------------------------
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+line 22000
+line 23000
+line 24000
+line 25000
+line 26000
+line 27000
+line 28000
+line 29000
+line 30000
+line 31000
+line 32000
+line 33000
+line 34000
+line 35000
+line 36000
+line 37000
+line 38000
+line 39000
+line 40000
+line 41000
+line 42000
+line 43000
+line 44000
+line 45000
+line 46000
+line 47000
+line 48000
+line 49000
+line 50000
+line 51000
+line 52000
+line 53000
+line 54000
+line 55000
+line 56000
+line 57000
+line 58000
+line 59000
+line 60000
+line 61000
+line 62000
+line 63000
+line 64000
+line 65000
+line 66000
+line 67000
+line 68000
+line 69000
+line 70000
+line 71000
+line 72000
+line 73000
+line 74000
+line 75000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+Active Entity Linking done.
+Dataset: ../data/SimpleQuestions_v2_augmented/all.txt
+Index - Entity: ../indexes/entity_2M.pkl
+Index - Reachability: ../indexes/reachability_2M.pkl
+Index - Names: ../indexes/names_2M.pkl
+Entity Detection Results: query-text/
+Hits: 100
+Output: linking-results
+--------------------------------------------------------------------------------
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+line 22000
+line 23000
+line 24000
+line 25000
+line 26000
+line 27000
+line 28000
+line 29000
+line 30000
+line 31000
+line 32000
+line 33000
+line 34000
+line 35000
+line 36000
+line 37000
+line 38000
+line 39000
+line 40000
+line 41000
+line 42000
+line 43000
+line 44000
+line 45000
+line 46000
+line 47000
+line 48000
+line 49000
+line 50000
+line 51000
+line 52000
+line 53000
+line 54000
+line 55000
+line 56000
+line 57000
+line 58000
+line 59000
+line 60000
+line 61000
+line 62000
+line 63000
+line 64000
+line 65000
+line 66000
+line 67000
+line 68000
+line 69000
+line 70000
+line 71000
+line 72000
+line 73000
+line 74000
+line 75000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+getting query texts...
+notfound (empty query text): 0
+line 0
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+line 21000
+Active Entity Linking done.

@@ -66,11 +66,15 @@ if not os.path.exists(args.results_path):
 
 def predict(dataset_iter=test_iter, dataset=test, data_name="test"):
     print("Dataset: {}".format(data_name))
+    # get the lineids
+    fpath = "../data/SimpleQuestions_v2_augmented/{}_lineids.txt".format(data_name)
+    lineids = open(fpath, 'r').read().splitlines()
+    idx = 0
+
     model.eval();
     dataset_iter.init_epoch()
 
     n_correct = 0
-    linenum = 1
     fname = "main-{}-results.txt".format(data_name)
     results_file = open(os.path.join(args.results_path, fname), 'w')
 
@@ -89,10 +93,10 @@ def predict(dataset_iter=test_iter, dataset=test, data_name="test"):
 
         # print and write the result
         for i in range(data_batch.batch_size):
-            line_to_print = "{}-{} %%%% {} %%%% {}".format(data_name, linenum, " ".join(question_array[i]), " ".join(tag_array[i]))
+            line_to_print = "{} %%%% {} %%%% {}".format(lineids[idx], " ".join(question_array[i]), " ".join(tag_array[i]))
             # print(line_to_print)
             results_file.write(line_to_print + "\n")
-            linenum += 1
+            idx += 1
         gold_list.append(np.transpose(data_batch.label.cpu().data.numpy()))
         pred_list.append(index_tag)
 

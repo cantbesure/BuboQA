@@ -223,3 +223,50 @@ Traceback (most recent call last):
   File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/sklearn/utils/validation.py", line 382, in check_array
     array = np.array(array, dtype=dtype, order=order, copy=copy)
 ValueError: could not convert string to float: 'billy corgan'
+getting relations...
+getting query text...
+notfound (empty query text): 0
+getting query text...
+notfound (empty query text): 0
+getting questions...
+loading index from: ../indexes/entity_2M.pkl
+loading index from: ../indexes/reachability_2M.pkl
+loading index from: ../indexes/names_2M.pkl
+line 0
+line 10000
+line 20000
+line 30000
+line 40000
+line 50000
+line 60000
+line 70000
+done
+Traceback (most recent call last):
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/indexes/base.py", line 2134, in get_loc
+    return self._engine.get_loc(key)
+  File "pandas/index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas/index.c:4433)
+  File "pandas/index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas/index.c:4279)
+  File "pandas/src/hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13742)
+  File "pandas/src/hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13696)
+KeyError: 'label'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "cross_linking_data.py", line 292, in <module>
+    y = df['true_label']
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 2059, in __getitem__
+    return self._getitem_column(key)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/frame.py", line 2066, in _getitem_column
+    return self._get_item_cache(key)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py", line 1386, in _get_item_cache
+    values = self._data.get(item)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/core/internals.py", line 3543, in get
+    loc = self.items.get_loc(item)
+  File "/u5/s43mohammed/anaconda3/lib/python3.6/site-packages/pandas/indexes/base.py", line 2136, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas/index.c:4433)
+  File "pandas/index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas/index.c:4279)
+  File "pandas/src/hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13742)
+  File "pandas/src/hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas/hashtable.c:13696)
+KeyError: 'label'

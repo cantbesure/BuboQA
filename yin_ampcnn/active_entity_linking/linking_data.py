@@ -131,7 +131,7 @@ def linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_
         if i % 1000 == 0:
             print("line {}".format(i))
 
-        truth_mid, truth_mid_name, truth_rel, question = id2question[lineid]
+        truth_mid, truth_name, truth_rel, question = id2question[lineid]
         queries = id2queries[lineid]
         C = []  # candidate entities
         C_counts = []
@@ -165,10 +165,6 @@ def linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_
             for mid, count_mid in C_counts:
                 if mid in index_names.keys():
                     cand_ent_name = pick_best_name(question, index_names[mid])
-                    try:
-                        truth_name = pick_best_name(question, index_names[truth_mid])
-                    except:
-                        continue
                     if cand_ent_name == truth_name:  # if name is correct, we are good
                         data['exact_name_match'].append(1)
                     else:

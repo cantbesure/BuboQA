@@ -169,15 +169,18 @@ def linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_
                         data['exact_name_match'].append(1)
                     else:
                         data['exact_name_match'].append(0)
-                        if fuzz.ratio(cand_ent_name, truth_name) >= 60:
-                            data['partial_name_match'].append(1)
-                        else:
-                            data['partial_name_match'].append(0)
+
+                    # if not exact match but close match
+                    if cand_ent_name != truth_name and fuzz.ratio(cand_ent_name, truth_name) >= 60:
+                        data['partial_name_match'].append(1)
+                    else:
+                        data['partial_name_match'].append(0)
 
                     if mid == truth_mid:
                         data['true_label'].append(1)
                     else:
                         data['true_label'].append(0)
+
                     data['lineid'] = lineid
                     data['query'] = query_text
                     data['length_name'].append(len(cand_ent_name.split()))

@@ -4,7 +4,7 @@ import os
 import sys
 import argparse
 
-# python results_to_query.py -d ../data/SimpleQuestions_v2_modified/all.txt -r results -o query-text/
+# python results_to_silver_query.py -d ../data/SimpleQuestions_v2_augmented/all.txt -r data -o silver-query-text/
 
 def get_questions(datapath):
     print("getting questions...")
@@ -74,13 +74,16 @@ def convert_to_query_text(datapath, resultdir, outdir):
                 query_tokens = []
                 spans = get_span(tags)
                 for span in spans:
-                    query_tokens.append(" ".join(tokens[span[0]:span[1]]))
+                    span_text = " ".join(tokens[span[0]:span[1]]).strip()
+                    if span_text != "":
+                        query_tokens.append(span_text)
 
                 outfile.write(lineid)
                 if len(query_tokens) == 0 and lineid in id2question.keys():
                     query_text = id2question[lineid]
                     query_tokens.append(query_text)
                 # if no query text found, use the entire question as query
+
                 for token in query_tokens:
                     line_to_print = " %%%% {}".format(token)
                     # print(line_to_print)

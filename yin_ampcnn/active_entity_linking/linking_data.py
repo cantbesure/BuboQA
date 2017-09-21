@@ -181,8 +181,8 @@ def linking_data_one_file(id2question, index_ent, index_reach, index_names, ent_
                     else:
                         data['true_label'].append(0)
 
-                    data['lineid'] = lineid
-                    data['query'] = query_text
+                    data['lineid'].append(lineid)
+                    data['query'].append(query_text)
                     data['length_name'].append(len(cand_ent_name.split()))
                     data['length_question'].append(len(question.split()))
                     data['length_query'].append(len(query_tokens))
@@ -202,7 +202,7 @@ def active_entity_linking(data_path, index_entpath, index_reachpath, index_names
     index_reach = get_index(index_reachpath)
     index_names = get_index(index_namespath)
 
-    fnames = ["train", "valid", "test"]
+    fnames = ["valid", "train", "test"]
     for fname in fnames:
         inpath = os.path.join(outpath, fname + ".txt")
         ent_resultpath = os.path.join(ent_resultdir, fname + ".txt")

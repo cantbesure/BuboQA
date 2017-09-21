@@ -1,3 +1,5 @@
+nohup.out
+.ipynb_checkpoints
 .idea/*
 data
 *_cache

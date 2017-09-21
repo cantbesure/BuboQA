@@ -4,7 +4,7 @@ import os
 import sys
 import argparse
 
-# python results_to_silver_query.py -d ../data/SimpleQuestions_v2_augmented/all.txt -r data -o silver-query-text/
+# python data_to_silver_query.py -d ../data/SimpleQuestions_v2_augmented/all.txt -r data -o silver-query-text/
 
 def get_questions(datapath):
     print("getting questions...")

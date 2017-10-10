@@ -21,7 +21,7 @@ def gold_entity_detection(datadir, outdir):
     allpath = os.path.join(outdir, "all.txt")
     outallfile = open(allpath, 'w')
     # files = [("annotated_fb_data_train", "train"), ("annotated_fb_data_valid", "val"), ("annotated_fb_data_test", "test")]
-    files = [("train", "train"), ("val", "val"), ("test", "test")]
+    files = [("train", "train"), ("valid", "valid"), ("test", "test")]
     for f_tuple in files:
         f = f_tuple[0]
         fname = f_tuple[1]
@@ -38,7 +38,7 @@ def gold_entity_detection(datadir, outdir):
                     print("line: {}".format(i))
 
                 items = line.strip().split("\t")
-                if len(items) != 5:
+                if len(items) != 6:
                     print("ERROR: line - {}".format(line))
                     sys.exit(1)
 

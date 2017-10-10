@@ -106,7 +106,7 @@ def entity_linking_one_file(id2question, index_ent, index_reach, index_names, en
 
 
         for query_text in queries:
-            query_tokens = query_text.split()
+            query_tokens = query_text.lower().split()
             N = min(len(query_tokens), 3)
 
             for n in range(N, 0, -1):
@@ -152,7 +152,8 @@ def active_entity_linking(data_path, index_entpath, index_reachpath, index_names
     index_reach = get_index(index_reachpath)
     index_names = get_index(index_namespath)
 
-    fnames = ["train", "valid", "test"]
+    # fnames = ["train", "valid", "test"]
+    fnames = ["valid", "test"]
     for fname in fnames:
         inpath = os.path.join(outpath, fname + ".txt")
         ent_resultpath = os.path.join(ent_resultdir, fname + ".txt")

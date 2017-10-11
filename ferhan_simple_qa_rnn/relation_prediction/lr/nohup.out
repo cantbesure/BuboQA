@@ -1,0 +1,20 @@
+done
+(86755, 600)
+(86755,)
+done
+(21687, 600)
+(21687,)
+model trained!
+Traceback (most recent call last):
+  File "lr_with_w2v_features.py", line 92, in <module>
+    pickle.dump( clf, open( "lr_fit_train_valid.pkl", "wb" ) )
+NameError: name 'pickle' is not defined
+done
+(86755, 600)
+(86755,)
+done
+(21687, 600)
+(21687,)
+model trained!
+accuracy_on_train: 74.24240677770733
+accuracy on test dataset: 71.34688984184073

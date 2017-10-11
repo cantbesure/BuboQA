@@ -29,12 +29,11 @@ dataset = sys.argv[1]
 outfile = open(sys.argv[3], 'w')
 with open(sys.argv[2], 'r') as f:
     for i, line in enumerate(f):
-        items = line.split(" #### ")
-        question = items[0].strip()
-        query = strip_accents(items[1].strip().lower())
-        if query == "":
-            query = strip_accents(question.lower())
-        outfile.write("{}-{} %%%% {}\n".format(dataset, i+1, query))
+        items = line.split(" %%%% ")
+        lineid = items[0].strip()
+        question = items[1].strip()
+        query = items[2:]
+        outfile.write("{} %%%% {}".format(lineid, " %%%% ".join(query)))
 
 outfile.close()
 

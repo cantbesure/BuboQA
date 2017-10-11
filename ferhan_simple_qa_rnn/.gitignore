@@ -9,6 +9,7 @@ __pycache__/
 entity_detection/*cache*/*
 entity_detection/data
 relation_prediction/*cache*/*
+relation_prediction/lr/feature*
 end_to_end/rel-results
 end_to_end/ent-results
 end_to_end/augmented-fb-subsets
